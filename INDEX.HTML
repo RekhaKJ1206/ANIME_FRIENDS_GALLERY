@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime 2×3 Friends Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    font-family:'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fad0c4 100%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-height:100vh;
+    color:#000;
+}
+header {
+    text-align:center;
+    margin-top:20px;
+}
+header h1{
+    font-size:2.5rem;
+    text-shadow:0 0 10px #fff;
+}
+header p{
+    margin-top:5px;
+}
+
+.anime-gallery{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+    margin:40px;
+}
+
+.anime-card{
+    width:250px;
+    height:350px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 0 10px #000;
+    transition: transform 0.5s, box-shadow 0.5s;
+    cursor:pointer;
+    position:relative;
+}
+
+.anime-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition: transform 0.5s, filter 0.5s;
+}
+
+.anime-card:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px #fff;
+}
+
+.friend-info{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:rgba(0,0,0,0.7);
+    color:#fff;
+    padding:10px;
+    text-align:center;
+    transform:translateY(100%);
+    transition: transform 0.4s;
+}
+
+.anime-card:hover .friend-info{
+    transform:translateY(0);
+}
+
+/* Modal */
+.profile-modal{
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+.modal-content{
+    background:#111;
+    color:#fff;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    max-width:400px;
+    width:90%;
+}
+.modal-content img{
+    width:200px;
+    border-radius:15px;
+    margin-bottom:10px;
+}
+.close{
+    position:absolute;
+    top:10px; right:20px;
+    font-size:2rem;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Anime Friends Gallery</h1>
+  <h1>BCA D-ROW 2</h1>
+  <p>Hover to see info, click to view profile</p>
+</header>
+
+<section class="anime-gallery">
+  <!-- Friend 1 -->
+  <div class="anime-card" onclick="openProfile('friend1')">
+    <img src="https://static.vecteezy.com/system/resources/previews/033/662/051/non_2x/cartoon-lofi-young-manga-style-girl-while-listening-to-music-in-the-rain-ai-generative-photo.jpg" alt="Rekha K J">
+    <div class="friend-info">
+      <h3>Rekha K J</h3>
+      <p>Anime & Coding</p>
+    </div>
+  </div>
+
+  <!-- Friend 2 -->
+  <div class="anime-card" onclick="openProfile('friend2')">
+    <img src="https://img.freepik.com/premium-photo/anime-girl-with-pink-hair-red-eyes_893012-193090.jpg" alt="Hithaisini R S">
+    <div class="friend-info">
+      <h3>Hithaisini R S</h3>
+      <p>Manga Enthusiast</p>
+    </div>
+  </div>
+
+  <!-- Friend 3 (Vrithika Updated) -->
+  <div class="anime-card" onclick="openProfile('friend3')">
+    <img src="https://cdn.pixabay.com/photo/2023/02/07/10/49/ai-generated-7773820_1280.jpg" alt="Vrithika K">
+    <div class="friend-info">
+      <h3>Vrithika K</h3>
+      <p>Cosplay Artist</p>
+    </div>
+  </div>
+
+  <!-- Friend 4 (Nandini Updated) -->
+  <div class="anime-card" onclick="openProfile('friend4')">
+    <img src="https://wallpapercave.com/wp/wp6127535.jpg" alt="Nandini">
+    <div class="friend-info">
+      <h3>Nandini</h3>
+      <p>Anime Gamer</p>
+    </div>
+  </div>
+
+  <!-- Friend 5 (Harini Updated) -->
+  <div class="anime-card" onclick="openProfile('friend5')">
+    <img src="https://www.kindpng.com/picc/m/413-4138176_creative-anime-girl-hd-png-download.png" alt="Harini V">
+    <div class="friend-info">
+      <h3>Harini V</h3>
+      <p>Manga Collector</p>
+    </div>
+  </div>
+
+  <!-- Friend 6 (Lavanya) -->
+  <div class="anime-card" onclick="openProfile('friend6')">
+    <img src="https://i.pinimg.com/736x/40/6f/53/406f536db22648774404fa52399afc41.jpg" alt="Lavanya">
+    <div class="friend-info">
+      <h3>Lavanya</h3>
+      <p>Anime Blogger</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modals -->
+<div id="friend1" class="profile-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProfile('friend1')">&times;</span>
+    <h2>Rekha K J</h2>
+    <img src="https://static.vecteezy.com/system/resources/previews/033/662/051/non_2x/cartoon-lofi-young-manga-style-girl-while-listening-to-music-in-the-rain-ai-generative-photo.jpg">
+    <p>Anime & Coding Enthusiast</p>
+    <p>Instagram: @_rekha_k_j_</p>
+    <p>Roll No: 25BCAD74</p>
+  </div>
+</div>
+
+<div id="friend2" class="profile-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProfile('friend2')">&times;</span>
+    <h2>Hithaisini R S</h2>
+    <img src="https://img.freepik.com/premium-photo/anime-girl-with-pink-hair-red-eyes_893012-193090.jpg">
+    <p>Manga Enthusiast & Artist</p>
+    <p>Instagram: @hithaisini_09</p>
+    <p>Roll No: 25BCAD24</p>
+  </div>
+</div>
+
+<div id="friend3" class="profile-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProfile('friend3')">&times;</span>
+    <h2>Vrithika K</h2>
+    <img src="https://cdn.pixabay.com/photo/2023/02/07/10/49/ai-generated-7773820_1280.jpg">
+    <p>Cosplay Artist & Anime Lover</p>
+    <p>Instagram: @vrithika_krishnan</p>
+    <p>Roll No: 25BCAD71</p>
+  </div>
+</div>
+
+<div id="friend4" class="profile-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProfile('friend4')">&times;</span>
+    <h2>Nandini</h2>
+    <img src="https://wallpapercave.com/wp/wp6127535.jpg">
+    <p>Anime Gamer & Streamer</p>
+    <p>Instagram: @_its_me_nandu_44_</p>
+    <p>Roll No: 25BCAD76</p>
+  </div>
+</div>
+
+<div id="friend5" class="profile-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProfile('friend5')">&times;</span>
+    <h2>Harini V</h2>
+    <img src="https://www.kindpng.com/picc/m/413-4138176_creative-anime-girl-hd-png-download.png">
+    <p>Manga Collector & Reviewer</p>
+    <p>Instagram: @harini_vijayan07</p>
+    <p>Roll No: 25BCAD23</p>
+  </div>
+</div>
+
+<div id="friend6" class="profile-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProfile('friend6')">&times;</span>
+    <h2>Lavanya</h2>
+    <img src="https://i.pinimg.com/736x/40/6f/53/406f536db22648774404fa52399afc41.jpg">
+    <p>Anime Blogger & Critic</p>
+    <p>Instagram: ||._.lara_wingsy._.||</p>
+    <p>Roll No: 25BCAD35</p>
+  </div>
+</div>
+
+<script>
+function openProfile(id){ document.getElementById(id).style.display='flex'; }
+function closeProfile(id){ document.getElementById(id).style.display='none'; }
+</script>
+
+</body>
+</html>
